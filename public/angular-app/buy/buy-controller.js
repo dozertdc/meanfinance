@@ -13,6 +13,9 @@ function BuyController($http, $window, AuthFactory, jwtHelper, $location) {
       
       $http.post('/api/users/'+ username +"/stocks", data).then(function(response) {
         //check the responses
+        if (response.status == 200) {
+          vm.message = "Bought Stock Successfully!"
+        }
       }).catch(function(error) {
         console.log(error);
       })
