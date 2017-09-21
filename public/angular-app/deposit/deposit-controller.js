@@ -8,13 +8,17 @@ function DepositController($http, $window, AuthFactory, jwtHelper, $location) {
       var token = $window.sessionStorage.token;
       var decodedToken = jwtHelper.decodeToken(token);
       var username = decodedToken.username;
-      var data = {"amount" : vm.amount};
+      var data;
+      if(vm.amount>0){
+        data = {"amount" : vm.amount};
+      }
       
       $http.put('/api/users/'+ username +"/deposit", data).then(function(response) {
         if (response.status == 200) {
           vm.message = "Balance increased."
         }
       }).catch(function(error) {
+        vm.message = "Must Add Positive Amount";
         console.log(error);
       })
     } else {
