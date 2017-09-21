@@ -91,6 +91,7 @@ module.exports.bStocksBuy = function(req, res) {
                   _id : symbol,
                   amount : req.body.amount
                 })
+                userBalance = user.blanace - cost;
                 user.save(function(err, userUpdated) {
                   if (err) {
                     res
