@@ -90,8 +90,8 @@ module.exports.bStocksBuy = function(req, res) {
                 stocks.push({
                   _id : symbol,
                   amount : req.body.amount
-                })
-                userBalance = user.blanace - cost;
+                });
+                user.balance = user.balance - cost;
                 user.save(function(err, userUpdated) {
                   if (err) {
                     res

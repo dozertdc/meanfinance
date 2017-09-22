@@ -15,7 +15,7 @@ function DepositController($http, $window, AuthFactory, jwtHelper, $location) {
       
       $http.put('/api/users/'+ username +"/deposit", data).then(function(response) {
         if (response.status == 200) {
-          vm.message = "Balance increased."
+          vm.message = "Balance increased by $" + vm.amount + "."
         }
       }).catch(function(error) {
         vm.message = "Must Add Positive Amount";
